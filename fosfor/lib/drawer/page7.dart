@@ -12,7 +12,7 @@ class _page7State extends State<page7> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Vertual qabulxona"),
+        title: Text("Virtual qabulxona"),
         backgroundColor: Color.fromARGB(255, 8, 12, 228),
       ),
       body: ListView(
