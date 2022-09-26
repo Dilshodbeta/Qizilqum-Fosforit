@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:fosfor/drawer/operator.dart';
 import 'package:fosfor/drawer/page10.dart';
 import 'package:fosfor/drawer/page11.dart';
 import 'package:fosfor/drawer/page12.dart';
@@ -18,7 +19,6 @@ import 'package:fosfor/page5.dart';
 import 'package:fosfor/page6.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'drawer/page7.dart';
 import 'drawer/page8.dart';
 import 'drawer/page9.dart';
 import 'drawer/page10.dart';
@@ -42,12 +42,8 @@ Future<void> _launchUrl() async {
 }
 
 class _fosforState extends State<fosfor> {
-   int _page = 0;
-   final _pages =[
-    HomePage(),
-    page3(),
-    page14()
-   ];
+  int _page = 0;
+  final _pages = [HomePage(), page3(), page14(),OperatorPage()];
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
   @override
@@ -60,39 +56,35 @@ class _fosforState extends State<fosfor> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.add),
-            color: Colors.yellow,
+            icon: Icon(Icons.language),
+            color: Color.fromARGB(255, 59, 255, 62),
             splashColor: Colors.yellow,
           ),
-          
         ],
         foregroundColor: Colors.black,
       ),
-
-  bottomNavigationBar: CurvedNavigationBar(
-          key: _bottomNavigationKey,
-          index: 0,
-          height: 60.0,
-          items: <Widget>[
-            Icon(Icons.home, size: 30),
-            Icon(Icons.shopping_cart_outlined, size: 30),
-            Icon(Icons.add_location, size: 30),
-          
-          ],
-          color: Color.fromARGB(255, 7, 229, 44),
-          buttonBackgroundColor: Colors.white,
-          backgroundColor: Colors.blueAccent,
-          animationCurve: Curves.easeInOut,
-          animationDuration: Duration(milliseconds: 600),
-          onTap: (index) {
-            setState(() {
-              _page = index;
-            });
-          },
-          letIndexChange: (index) => true,
-        ),
-        
-      
+      bottomNavigationBar: CurvedNavigationBar(
+        key: _bottomNavigationKey,
+        index: 0,
+        height: 60.0,
+        items: <Widget>[
+          Icon(Icons.home, size: 30),
+          Icon(Icons.shopping_cart_outlined, size: 30),
+          Icon(Icons.add_location, size: 30),
+          Icon(Icons.support_agent_rounded)
+        ],
+        color: Color.fromARGB(255, 7, 229, 44),
+        buttonBackgroundColor: Colors.white,
+        backgroundColor: Colors.blueAccent,
+        animationCurve: Curves.easeInOut,
+        animationDuration: Duration(milliseconds: 600),
+        onTap: (index) {
+          setState(() {
+            _page = index;
+          });
+        },
+        letIndexChange: (index) => true,
+      ),
       drawer: new Drawer(
           child: new Drawer(
               // ignore: unnecessary_new
@@ -103,23 +95,6 @@ class _fosforState extends State<fosfor> {
           ),
 
           // ignore: unnecessary_new
-          new ListTile(
-            title: new Text("Rahbariyat qabuli"),
-            trailing: new Icon(Icons.account_circle_sharp),
-            onTap: () {
-              Route route = MaterialPageRoute(builder: (context) => page6());
-              Navigator.push(context, route);
-            },
-            iconColor: Colors.black,
-          ),
-          new ListTile(
-            title: new Text("Vertiual qabulxona"),
-            onTap: () {
-              Route route = MaterialPageRoute(builder: (context) => page7());
-              Navigator.push(context, route);
-            },
-            trailing: new Icon(Icons.add),
-          ),
           new ListTile(
             title: new Text("Murojjatlar"),
             onTap: () {
@@ -134,7 +109,7 @@ class _fosforState extends State<fosfor> {
               Route route = MaterialPageRoute(builder: (context) => page9());
               Navigator.push(context, route);
             },
-            trailing: new Icon(Icons.add),
+            trailing: new Icon(Icons.emoji_objects),
           ),
           new ListTile(
             title: new Text("Qaror va Farmonlar"),
@@ -155,12 +130,12 @@ class _fosforState extends State<fosfor> {
           new ListTile(
             title: new Text("Ishga kirish"),
             onTap: () {},
-            trailing: new Icon(Icons.add),
+            trailing: new Icon(Icons.circle_sharp),
           ),
           new ListTile(
             title: new Text("Bog'lanish"),
             onTap: () {},
-            trailing: new Icon(Icons.add),
+            trailing: new Icon(Icons.call),
           )
         ],
       ))),
